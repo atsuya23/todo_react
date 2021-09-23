@@ -48,7 +48,15 @@ export const App = () => {
         todoText={todoText}
         onChange={onChangeTodoText}
         onClick={onClickAdd}
+        disabled={undoneTodos.length >= 5}
       />
+
+      {undoneTodos.length >= 5 && (
+        <p style={{ color: "red" }}>
+          {" "}
+          登録できるTODOは５個までです！完了または削除をして下さい。
+        </p>
+      )}
 
       <UndoneTodo
         undoneTodos={undoneTodos}
