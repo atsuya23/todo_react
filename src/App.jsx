@@ -21,6 +21,15 @@ export const App = () => {
     setUndoneTodos(newTodos);
   };
 
+  const onClickDone = (index) => {
+    const newUndoneTodos = [...undoneTodos];
+    newUndoneTodos.splice(index, 1);
+
+    const newDoneTodos = [...doneTodos, undoneTodos[index]];
+    setUndoneTodos(newUndoneTodos);
+    setDoneTodos(newDoneTodos);
+  };
+
   return (
     <>
       <div className="input-area">
@@ -38,7 +47,7 @@ export const App = () => {
             return (
               <div key={todo} className="list-row">
                 <li>{todo}</li>
-                <button>完了</button>
+                <button onClick={() => onClickDone(index)}>完了</button>
                 <button onClick={() => onClickDelete(index)}>削除</button>
               </div>
             );
