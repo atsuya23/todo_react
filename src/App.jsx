@@ -30,6 +30,15 @@ export const App = () => {
     setDoneTodos(newDoneTodos);
   };
 
+  const onClickUndone = (index) => {
+    const newDoneTodos = [...doneTodos];
+    newDoneTodos.splice(index, 1);
+
+    const newUndoneTodos = [...undoneTodos, doneTodos[index]];
+    setDoneTodos(newDoneTodos);
+    setUndoneTodos(newUndoneTodos);
+  };
+
   return (
     <>
       <div className="input-area">
@@ -58,11 +67,11 @@ export const App = () => {
       <div className="undone">
         <p className="title">完了のTODO</p>
         <ul>
-          {doneTodos.map((todo) => {
+          {doneTodos.map((todo, index) => {
             return (
               <div className="list-row">
                 <li>うううう</li>
-                <button>戻す</button>
+                <button onClick={() => onClickUndone(index)}>戻す</button>
               </div>
             );
           })}
