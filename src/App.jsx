@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./styles.css";
 
 export const App = () => {
-  const [todoText, setTodoText] = useState("");
-  const [undoneTodos, setUndoneTodos] = useState(["あああ", "いいい"]);
-  const [doneTodos, setDoneTodos] = useState(["ううう"]);
+  const [todoText, setTodoText] = useState();
+  const [undoneTodos, setUndoneTodos] = useState([]);
+  const [doneTodos, setDoneTodos] = useState([]);
 
   const onChangeTodoText = (event) => setTodoText(event.target.value);
 
@@ -70,7 +70,7 @@ export const App = () => {
           {doneTodos.map((todo, index) => {
             return (
               <div className="list-row">
-                <li>うううう</li>
+                <li>{todo}</li>
                 <button onClick={() => onClickUndone(index)}>戻す</button>
               </div>
             );
