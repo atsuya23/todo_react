@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./styles.css";
 import { InputTodo } from "./components/InputTodo";
+import { UndoneTodo } from "./components/UndoneTodo";
+import { DoneTodo } from "./components/DoneTodo";
 
 export const App = () => {
   const [todoText, setTodoText] = useState();
@@ -44,37 +46,17 @@ export const App = () => {
     <>
       <InputTodo
         todoText={todoText}
-        onChage={onChangeTodoText}
+        onChange={onChangeTodoText}
         onClick={onClickAdd}
       />
-      <div className="done">
-        <p className="title">未完了のTODO</p>
-        <ul>
-          {undoneTodos.map((todo, index) => {
-            return (
-              <div key={todo} className="list-row">
-                <li>{todo}</li>
-                <button onClick={() => onClickDone(index)}>完了</button>
-                <button onClick={() => onClickDelete(index)}>削除</button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
 
-      <div className="undone">
-        <p className="title">完了のTODO</p>
-        <ul>
-          {doneTodos.map((todo, index) => {
-            return (
-              <div className="list-row">
-                <li>{todo}</li>
-                <button onClick={() => onClickUndone(index)}>戻す</button>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
+      <UndoneTodo
+        undoneTodos={undoneTodos}
+        onClickDone={onClickDone}
+        onClickDelete={onClickDelete}
+      />
+
+      <DoneTodo doneTodos={doneTodos} onClickUndone={onClickUndone} />
     </>
   );
 };
