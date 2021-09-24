@@ -42,6 +42,12 @@ export const App = () => {
     setUndoneTodos(newUndoneTodos);
   };
 
+  const onClickDeleteAllDoneTodos = () => {
+    const message = "完了済みタスクを全て削除しますが宜しいですか？";
+    alert(message);
+    setDoneTodos([]);
+  };
+
   return (
     <>
       <InputTodo
@@ -50,6 +56,14 @@ export const App = () => {
         onClick={onClickAdd}
         disabled={undoneTodos.length >= 5}
       />
+
+      {(undoneTodos.length >= 1 || doneTodos.length >= 1) && (
+        <p className="number">
+          未完了タスク : {undoneTodos.length}
+          <br />
+          完了タスク : {doneTodos.length}
+        </p>
+      )}
 
       {undoneTodos.length >= 5 && (
         <p style={{ color: "red" }}>
@@ -65,6 +79,12 @@ export const App = () => {
       />
 
       <DoneTodo doneTodos={doneTodos} onClickUndone={onClickUndone} />
+
+      {doneTodos.length > 0 && (
+        <button onClick={() => onClickDeleteAllDoneTodos()}>
+          完了済タスクを一掃
+        </button>
+      )}
     </>
   );
 };

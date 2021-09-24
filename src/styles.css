@@ -55,3 +55,17 @@ li {
   align-items: center;
   padding-bottom: 4px;
 }
+
+.number {
+  background-color: gray;
+  color: white;
+  width: 110px;
+  padding: 8px;
+  margin: 8px;
+  border-radius: 8px;
+  margin-left: 290px;
+
+  text-align: right;
+  font-style: italic;
+  font-size: 14px;
+}
